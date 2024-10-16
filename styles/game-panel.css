@@ -1,0 +1,282 @@
+.game-container {
+  padding: 100px 0;
+  
+  flex-direction: column;
+  gap: 70px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 1640px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.choices {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.game-button:hover {
+  opacity: 0.8;
+}
+
+#background-screen {
+  height: 90%;
+  width: 90%;
+  background-color: black;
+  display: grid;
+  place-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.screen {
+  height: 440px;
+  width: 781px;
+  transform: translateY(150px);
+  z-index: -1;
+  position: relative;
+  animation: scale 500ms ease-in;
+}
+
+@keyframes scale {
+  0% {
+    scale: 0%;
+  }
+  100% {
+    scale: 100%;
+  }
+}
+
+
+.screen img {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+p {
+  font-size: 24px;
+}
+
+.end-panel {
+  height: 521px;
+  width: 923px;
+  background-image: url(/assets/img/png/Ecrant\ de\ fin.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  text-align: center;
+  padding: 100px 15px;
+  color: white;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+#layer-blur {
+  position: absolute;
+  display: grid;
+  place-content: center;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: none;
+}
+
+.container-simon {
+  background-image: url(/assets/img/png/indexbackground.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  color: white;
+}
+
+.lampe img {
+  width: 250px;
+}
+
+.lampe button {
+  position: absolute;
+}
+
+.lampe {
+  position: relative;
+  animation: slide 300ms ease-in forwards; /* Ajout de forwards pour garder l'état final */
+}
+
+.lampe:nth-child(1) {
+  animation: slide 600ms ease-in forwards;
+}
+
+.lampe:nth-child(2) {
+  animation: slide 900ms ease-in forwards;
+}
+
+.lampe:nth-child(3) {
+  animation: slide 1200ms ease-in forwards;
+}
+
+.lampe:nth-child(4) {
+  animation: slide 1500ms ease-in forwards;
+}
+
+.lampe:nth-child(5) {
+  animation: slide 1800ms ease-in forwards;
+}
+
+.lampe:nth-child(6) {
+  animation: slide 2100ms ease-in forwards;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateY(1000px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.game-button {
+  font-size: 16px;
+  border-radius: 50%;
+  border: none;
+  color: black;
+  cursor: pointer;
+}
+
+.jaune {
+  background-color: #ffd51b;
+  width: 170px;
+  height: 170px;
+  top: 50px;
+  left: 50px;
+}
+
+.purple {
+  background-color: #bf00ff;
+  width: 170px;
+  height: 170px;
+  top: 40px;
+  left: 50px;
+}
+
+.red {
+  background-color: #f0252f;
+  width: 170px;
+  height: 170px;
+  top: 40px;
+  left: 50px;
+}
+
+.orange {
+  background-color: #ff7627;
+  width: 170px;
+  height: 170px;
+  top: 40px;
+  left: 40px;
+}
+
+.blue {
+  background-color: #27deff;
+  width: 170px;
+  height: 170px;
+  top: 45px;
+  left: 40px;
+}
+
+.green {
+  background-color: #41ff27;
+  width: 170px;
+  height: 170px;
+  top: 60px;
+  left: 40px;
+}
+
+.body-font {
+  font-family: var(--primary-font);
+  font-size: 48px;
+}
+
+.game-container p {
+  color: #f539d7;
+  width: fit-content;
+}
+
+
+.score-container section{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-direction: column;
+  width: fit-content;
+}
+
+
+.message-fin {
+  height: fit-content;
+  padding: 10px 10px;
+  background-color: #f539d7;
+  border-radius: 50px 50px 50px 0;
+ 
+}
+
+.avatar-fin {
+  display: flex;
+  position: absolute;
+  bottom: 0px;
+  left: 50px;
+  
+}
+
+.action-button button {
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-family: var(--primary-font);
+  font-size: 48px;
+  cursor: pointer;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  gap: 200px;
+}
+
+.score-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+
+.socle {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: -1;
+  animation: slide 300ms ease-in forwards;
+}
+
+.gif {
+  position: absolute;
+  bottom: 170px;
+  right: -220px;
+  width: 500px;
+  z-index: -1;
+}
+

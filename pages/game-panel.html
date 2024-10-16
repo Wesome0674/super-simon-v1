@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/game-panel.css" />
+    <title>Le jeu du super simon</title>
+  </head>
+  <body class="container-simon">
+    <div class="game-container">
+      <div class="score-container">
+        <section>
+          <p class="body-font">SCORE :</p>
+          <p class="body-font" id="score">0</p>
+        </section>
+        <div class="screen">
+          <div id="background-screen">
+            <p class="body-font" style="color: white">
+              A <span id="turn">Simon</span>
+            </p>
+          </div>
+          <img src="/assets/img/png/ecran.png" alt="">
+        </div>
+        <h4 id="compteur">3</h4>
+      </div>
+      <div class="choices">
+        <div class="lampe">
+          <img src="/assets/img/png/lampe jaune.png" alt="" />
+          <button class="game-button jaune" id="yellow"></button>
+        </div>
+        <div class="lampe">
+          <img src="/assets/img/png/Lampe violet.png" alt="" />
+          <button class="game-button purple" id="purple"></button>
+        </div>
+        <div class="lampe">
+          <img src="/assets/img/png/lampe rouge.png" alt="" />
+          <button class="game-button red" id="red"></button>
+        </div>
+        <div class="lampe">
+          <img src="/assets/img/png/Lampe orange.png" alt="" />
+          <button class="game-button orange" id="orange"></button>
+        </div>
+        <div class="lampe">
+          <img src="/assets/img/png/Lampe bleu.png" alt="" />
+          <button class="game-button blue" id="blue"></button>
+        </div>
+        <div class="lampe">
+          <img src="/assets/img/png/lampe vert.png" alt="" />
+          <button class="game-button green" id="green"></button>
+        </div>
+      </div>
+    </div>
+    <div id="layer-blur">
+      <div class="end-panel">
+        <h2>SCORE : <strong id="score-fin">100</strong> points</h2>
+        <div class="avatar-fin">
+          <img src="/assets/img/png/chibi_mascot.png" alt="" />
+          <div class="message-fin">
+            <h3 id="message">Mémoire de poisson rouge</h3>
+          </div>
+        </div>
+      </div>
+      <div class="action-button">
+        <button id="replay">Rejouer</button>
+        <a href="/index.html">
+          <button>Accueil</button>
+        </a>
+      </div>
+    </div>
+    <img class="socle" src="/assets/img/png/socle.png" alt="" />
+    <img class="gif" src="/assets/img/png/gif1-1-unscreen.gif" alt="">
+    <script src="/script/main.js"></script>
+    <script src="/script/simon.js"></script>
+  </body>
+</html>
