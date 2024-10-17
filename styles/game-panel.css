@@ -39,7 +39,7 @@
 .screen {
   height: 440px;
   width: 781px;
-  transform: translateY(150px);
+  transform: translateY(100px);
   z-index: -1;
   position: relative;
   animation: scale 500ms ease-in;
