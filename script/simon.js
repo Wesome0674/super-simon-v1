@@ -21,7 +21,29 @@ const highlightSelectedColor = (tab) => {
     setTimeout(() => {
       const highlightedColor = document.getElementById(color);
       highlightedColor.style.opacity = "0.5";
-      backgroundScreen.style.backgroundColor = color;
+
+      switch (color) {
+        case "yellow":
+          backgroundScreen.style.backgroundColor = "#FFD51B";
+          break;
+        case "purple":
+          backgroundScreen.style.backgroundColor = "#BF00FF";
+          break;
+        case "red":
+          backgroundScreen.style.backgroundColor = "#F0252F";
+          break;
+        case "orange":
+          backgroundScreen.style.backgroundColor = "#FF7627";
+          break;
+        case "blue":
+          backgroundScreen.style.backgroundColor = "#27DEFF";
+          break;
+        case "green":
+          backgroundScreen.style.backgroundColor = "#41FF27";
+          break;
+        default:
+          console.log("sorry but it seems to not working");
+      }
 
       setTimeout(() => {
         highlightedColor.style.opacity = "1";
