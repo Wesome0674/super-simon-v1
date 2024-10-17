@@ -2,12 +2,31 @@ let score = 0;
 let isUserTurn = false;
 let delay = 1000;
 
-let audio1 = new Audio('/assets/son/1.mp3');
-let audio2 = new Audio('/assets/son/2.mp3');
-let audio3 = new Audio('/assets/son/3.mp3');
-let audio4 = new Audio('/assets/son/4.mp3');
-let audio5 = new Audio('/assets/son/5.mp3');
-let audio6 = new Audio('/assets/son/6.mp3');
+async function getColors() {
+  const url = "https://getcolors-garnuhpsxq-uc.a.run.app/";
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+
+    const colors = await response.json();
+
+    console.log(colors);
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+getColors();
+
+let audio1 = new Audio("/assets/son/1.mp3");
+let audio2 = new Audio("/assets/son/2.mp3");
+let audio3 = new Audio("/assets/son/3.mp3");
+let audio4 = new Audio("/assets/son/4.mp3");
+let audio5 = new Audio("/assets/son/5.mp3");
+let audio6 = new Audio("/assets/son/6.mp3");
 
 const possibleColors = ["yellow", "purple", "red", "orange", "blue", "green"];
 const state = document.querySelector("#turn");

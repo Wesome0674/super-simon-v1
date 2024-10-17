@@ -76,6 +76,7 @@ p {
   margin: 0 auto;
   position: relative;
   overflow: hidden;
+  animation: scale 500ms ease-in;
 }
 
 #layer-blur {
