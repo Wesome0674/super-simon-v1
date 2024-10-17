@@ -2,6 +2,13 @@ let score = 0;
 let isUserTurn = false;
 let delay = 1000;
 
+const state = document.querySelector("#turn");
+let gameColorsPattern = [];
+let clickedColors = [];
+const backgroundScreen = document.getElementById("background-screen");
+const possibleColors = ["yellow", "purple", "red", "orange", "blue", "green"];
+let colorOrder = []; // Pour stocker les couleurs dans l'ordre souhaité
+
 async function getColors() {
   const url = "https://getcolors-garnuhpsxq-uc.a.run.app/";
   try {
@@ -13,7 +20,12 @@ async function getColors() {
 
     const colors = await response.json();
 
-    console.log(colors);
+    // Organiser les couleurs selon l'ordre souhaité
+    colorOrder = colors
+      .map((color) => color.name.trim())
+      .filter((color) => possibleColors.includes(color));
+
+    console.log(colorOrder); // Vérifier les couleurs récupérées
   } catch (error) {
     console.log(error.message);
   }
@@ -27,18 +39,14 @@ let audio3 = new Audio("/assets/son/3.mp3");
 let audio4 = new Audio("/assets/son/4.mp3");
 let audio5 = new Audio("/assets/son/5.mp3");
 let audio6 = new Audio("/assets/son/6.mp3");
-
-const possibleColors = ["yellow", "purple", "red", "orange", "blue", "green"];
-const state = document.querySelector("#turn");
-
-let gameColorsPattern = [];
-let clikedColors = [];
-
-const backgroundScreen = document.getElementById("background-screen");
+let three = new Audio("/assets/son/three.mp3");
+let two = new Audio("/assets/son/two.mp3");
+let one = new Audio("/assets/son/one.mp3");
+let wrong = new Audio("/assets/son/wrong.mp3");
 
 const generateRandomColor = () => {
-  const randomIndex = Math.floor(Math.random() * possibleColors.length);
-  const selectedColor = possibleColors[randomIndex];
+  const randomIndex = Math.floor(Math.random() * colorOrder.length);
+  const selectedColor = colorOrder[randomIndex];
   gameColorsPattern.push(selectedColor);
 };
 
@@ -92,6 +100,7 @@ const userChooseAColor = () => {
     button.onclick = () => {
       if (!isUserTurn) return; // Ignorer les clics si ce n'est pas le tour du joueur
 
+      // Jouer le son correspondant à la couleur
       switch (button.id) {
         case "yellow":
           audio1.play();
@@ -114,24 +123,24 @@ const userChooseAColor = () => {
         default:
           console.log("sorry but it seems to not working");
       }
+
       // Changer la luminosité du bouton cliqué
       button.style.filter = "brightness(1)";
-
-      // Réinitialiser la luminosité après un délai
       setTimeout(() => {
-        button.style.filter = "brightness(50%)"; // Ou la valeur que tu veux
+        button.style.filter = "brightness(50%)";
       }, 500);
 
-      clikedColors.push(button.id);
-      console.log(clikedColors);
+      clickedColors.push(button.id);
+      console.log(clickedColors);
       console.log(gameColorsPattern);
 
       // Vérification si le dernier bouton cliqué est correct
       const lastClickedColor = button.id;
       const isCorrectColor =
-        lastClickedColor === gameColorsPattern[clikedColors.length - 1];
+        lastClickedColor === gameColorsPattern[clickedColors.length - 1];
 
       if (!isCorrectColor) {
+        wrong.play();
         // Le joueur a cliqué sur une couleur incorrecte
         let layerEnd = document.getElementById("layer-blur");
         layerEnd.style.display = "grid";
@@ -156,23 +165,23 @@ const userChooseAColor = () => {
           resetGame();
           layerEnd.style.display = "none";
           location.reload();
-          updateCompteur(); // Démarrer le compteur
+          updateCompteur();
         });
 
         return; // Arrêter l'exécution ici
       }
 
       // Vérification du motif seulement si le joueur a cliqué sur le bon bouton
-      if (clikedColors.length === gameColorsPattern.length) {
-        const isCorrectPattern = clikedColors.every(
+      if (clickedColors.length === gameColorsPattern.length) {
+        const isCorrectPattern = clickedColors.every(
           (color, index) => color === gameColorsPattern[index]
         );
 
         if (isCorrectPattern) {
           score++;
           document.querySelector("#score").innerHTML = score;
-          clikedColors = [];
-          isUserTurn = false; // Fin du tour du joueur
+          clickedColors = [];
+          isUserTurn = false;
           updateTurnDisplay();
           simonTurn(); // Passer au tour de Simon
           delay = delay - 50;
@@ -183,14 +192,14 @@ const userChooseAColor = () => {
 };
 
 const simonTurn = () => {
-  isUserTurn = false; // C'est le tour de Simon
-  generateRandomColor();
+  isUserTurn = false;
+  generateRandomColor(); // Toujours générer une couleur
   highlightSelectedColor(gameColorsPattern);
 };
 
 const resetGame = () => {
   score = 0;
-  clikedColors = [];
+  clickedColors = [];
   gameColorsPattern = [];
   document.querySelector("#score").innerHTML = score;
   updateTurnDisplay();
@@ -202,7 +211,6 @@ const updateTurnDisplay = () => {
 };
 
 // Démarre le jeu pour la première fois
-
 let compteur = document.querySelector("#compteur");
 let count = 3;
 
@@ -210,13 +218,26 @@ function updateCompteur() {
   state.innerHTML = "";
   if (count > 0) {
     compteur.innerHTML = count;
+    switch (count) {
+      case 3:
+        three.play();
+        break;
+      case 2:
+        two.play();
+        break;
+      case 1:
+        one.play();
+        break;
+      default:
+        console.log("sorry but it seems to not working");
+    }
     count--;
-    setTimeout(updateCompteur, 1000); // 1000 ms = 1 seconde
+    setTimeout(updateCompteur, 1000);
   } else {
-    compteur.innerHTML = ""; // Afficher 0 à la fin
+    compteur.innerHTML = "";
     state.innerHTML = "A Simon";
-    simonTurn(); // Démarrer le tour de Simon après le compteur
+    simonTurn();
   }
 }
 
-updateCompteur(); // Démarrer le compteur
+updateCompteur();
