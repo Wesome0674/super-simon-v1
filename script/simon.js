@@ -150,7 +150,7 @@ const resetGame = () => {
 };
 
 const updateTurnDisplay = () => {
-  state.innerHTML = isUserTurn ? "Toi" : "Simon";
+  state.innerHTML = isUserTurn ? "A Toi" : "A Simon";
 };
 
 // Démarre le jeu pour la première fois
@@ -159,12 +159,14 @@ let compteur = document.querySelector("#compteur");
 let count = 3;
 
 function updateCompteur() {
+  state.innerHTML = "";
   if (count > 0) {
     compteur.innerHTML = count;
     count--;
     setTimeout(updateCompteur, 1000); // 1000 ms = 1 seconde
   } else {
-    compteur.innerHTML = "0"; // Afficher 0 à la fin
+    compteur.innerHTML = ""; // Afficher 0 à la fin
+    state.innerHTML = "A Simon";
     simonTurn(); // Démarrer le tour de Simon après le compteur
   }
 }
