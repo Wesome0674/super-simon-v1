@@ -20,7 +20,7 @@ const highlightSelectedColor = (tab) => {
   tab.forEach((color, index) => {
     setTimeout(() => {
       const highlightedColor = document.getElementById(color);
-      highlightedColor.style.opacity = "0.5";
+      highlightedColor.style.filter = "brightness(1)";
 
       switch (color) {
         case "yellow":
@@ -46,7 +46,7 @@ const highlightSelectedColor = (tab) => {
       }
 
       setTimeout(() => {
-        highlightedColor.style.opacity = "1";
+        highlightedColor.style.filter = "brightness(50%)";
       }, 500);
     }, index * delay);
   });
@@ -65,6 +65,14 @@ const userChooseAColor = () => {
   buttonClicked.forEach((button) => {
     button.onclick = () => {
       if (!isUserTurn) return; // Ignorer les clics si ce n'est pas le tour du joueur
+
+      // Changer la luminosité du bouton cliqué
+      button.style.filter = "brightness(1)";
+
+      // Réinitialiser la luminosité après un délai
+      setTimeout(() => {
+        button.style.filter = "brightness(50%)"; // Ou la valeur que tu veux
+      }, 500);
 
       clikedColors.push(button.id);
       console.log(clikedColors);
@@ -113,6 +121,7 @@ const userChooseAColor = () => {
     };
   });
 };
+
 
 const simonTurn = () => {
   isUserTurn = false; // C'est le tour de Simon

@@ -20,9 +20,6 @@
   flex-wrap: wrap;
 }
 
-.game-button:hover {
-  opacity: 0.8;
-}
 
 #background-screen {
   height: 85%;
@@ -156,6 +153,7 @@ p {
   color: black;
   cursor: pointer;
   position: absolute;
+  filter: brightness(50%);
 }
 
 .jaune {
@@ -266,8 +264,9 @@ p {
 .gif {
   position: absolute;
   bottom: 170px;
-  right: -220px;
+  right: -70px;
   width: 500px;
   z-index: -1;
+  transform: scaleX(-1);
 }
 
