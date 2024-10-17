@@ -2,6 +2,13 @@ let score = 0;
 let isUserTurn = false;
 let delay = 1000;
 
+let audio1 = new Audio('/assets/son/1.mp3');
+let audio2 = new Audio('/assets/son/2.mp3');
+let audio3 = new Audio('/assets/son/3.mp3');
+let audio4 = new Audio('/assets/son/4.mp3');
+let audio5 = new Audio('/assets/son/5.mp3');
+let audio6 = new Audio('/assets/son/6.mp3');
+
 const possibleColors = ["yellow", "purple", "red", "orange", "blue", "green"];
 const state = document.querySelector("#turn");
 
@@ -66,6 +73,28 @@ const userChooseAColor = () => {
     button.onclick = () => {
       if (!isUserTurn) return; // Ignorer les clics si ce n'est pas le tour du joueur
 
+      switch (button.id) {
+        case "yellow":
+          audio1.play();
+          break;
+        case "purple":
+          audio2.play();
+          break;
+        case "red":
+          audio3.play();
+          break;
+        case "orange":
+          audio4.play();
+          break;
+        case "blue":
+          audio5.play();
+          break;
+        case "green":
+          audio6.play();
+          break;
+        default:
+          console.log("sorry but it seems to not working");
+      }
       // Changer la luminosité du bouton cliqué
       button.style.filter = "brightness(1)";
 
@@ -80,7 +109,8 @@ const userChooseAColor = () => {
 
       // Vérification si le dernier bouton cliqué est correct
       const lastClickedColor = button.id;
-      const isCorrectColor = lastClickedColor === gameColorsPattern[clikedColors.length - 1];
+      const isCorrectColor =
+        lastClickedColor === gameColorsPattern[clikedColors.length - 1];
 
       if (!isCorrectColor) {
         // Le joueur a cliqué sur une couleur incorrecte
@@ -132,7 +162,6 @@ const userChooseAColor = () => {
     };
   });
 };
-
 
 const simonTurn = () => {
   isUserTurn = false; // C'est le tour de Simon
