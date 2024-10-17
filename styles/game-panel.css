@@ -267,7 +267,7 @@ p {
 }
 
 #stars {
-  width: 50%;
+  width: 16%;
   top: 0;
   left: 20%;
   max-width: 100%;
@@ -276,41 +276,45 @@ p {
   z-index: -1;
 }
 #stars1 {
-  width: 35%;
-  top: 10%;
+  width: 14%;
+  top: 5%;
   right: 0;
   max-width: 100%;
   position: absolute;
   animation: stars 4s infinite;
-  z-index: 1;
+  z-index: -1;
 }
 #stars2 {
   width: 25%;
-  top: 20%;
-  left: 14%;
+  top: 44%;
+  left: 2%;
   max-width: 100%;
   position: absolute;
   animation: stars 4s infinite;
   z-index: -1;
 }
+
 #stars3 {
-  width: 80%;
-  top: 20%;
-  left: 69%;
-  max-width: 100%;
-  position: absolute;
-  animation: starsbis 4s infinite;
-  z-index: -1;
-}
-#stars4 {
   width: 20%;
-  top: 30%;
-  left: 64%;
+  top: 31%;
+  left: 67%;
   max-width: 100%;
   position: absolute;
   animation: starsbis 4s infinite;
   z-index: -1;
 }
+
+#stars4 {
+  width: 10%;
+  top: 55%;
+  left: 63%;
+  max-width: 100%;
+  position: absolute;
+  animation: starsbis 4s infinite;
+  z-index: -1;
+}
+
+
 @keyframes stars {
   0% {
     filter: opacity(0%);

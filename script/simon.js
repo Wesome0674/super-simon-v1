@@ -13,24 +13,18 @@ async function getColors() {
   const url = "https://getcolors-garnuhpsxq-uc.a.run.app/";
   try {
     const response = await fetch(url);
-
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
     }
-
     const colors = await response.json();
-
-    // Organiser les couleurs selon l'ordre souhaité
     colorOrder = colors
       .map((color) => color.name.trim())
       .filter((color) => possibleColors.includes(color));
-
     console.log(colorOrder); // Vérifier les couleurs récupérées
   } catch (error) {
     console.log(error.message);
   }
 }
-
 
 getColors();
 
@@ -44,6 +38,8 @@ let three = new Audio("/assets/son/three.mp3");
 let two = new Audio("/assets/son/two.mp3");
 let one = new Audio("/assets/son/one.mp3");
 let wrong = new Audio("/assets/son/wrong.mp3");
+
+let currentAudio = null; // Variable pour suivre le son en cours
 
 const generateRandomColor = () => {
   const randomIndex = Math.floor(Math.random() * colorOrder.length);
@@ -104,25 +100,31 @@ const userChooseAColor = () => {
       // Jouer le son correspondant à la couleur
       switch (button.id) {
         case "yellow":
-          audio1.play();
+          currentAudio = audio1;
           break;
         case "purple":
-          audio2.play();
+          currentAudio = audio2;
           break;
         case "red":
-          audio3.play();
+          currentAudio = audio3;
           break;
         case "orange":
-          audio4.play();
+          currentAudio = audio4;
           break;
         case "blue":
-          audio5.play();
+          currentAudio = audio5;
           break;
         case "green":
-          audio6.play();
+          currentAudio = audio6;
           break;
         default:
           console.log("sorry but it seems to not working");
+      }
+
+      // Jouer le son si ce n'est pas déjà en cours
+      if (currentAudio) {
+        currentAudio.currentTime = 0; // Remise à zéro du son
+        currentAudio.play();
       }
 
       // Changer la luminosité du bouton cliqué
@@ -179,13 +181,13 @@ const userChooseAColor = () => {
         );
 
         if (isCorrectPattern) {
-          score++;
+          score+= 15;
           document.querySelector("#score").innerHTML = score;
           clickedColors = [];
           isUserTurn = false;
           updateTurnDisplay();
           simonTurn(); // Passer au tour de Simon
-          delay = delay - 50;
+          delay = delay - 100;
         }
       }
     };
@@ -195,7 +197,9 @@ const userChooseAColor = () => {
 const simonTurn = () => {
   isUserTurn = false;
   generateRandomColor(); // Toujours générer une couleur
-  highlightSelectedColor(gameColorsPattern);
+  setTimeout(() => {
+    highlightSelectedColor(gameColorsPattern);
+  }, 1500); // Délai de 1 seconde avant le tour de Simon
 };
 
 const resetGame = () => {
@@ -216,7 +220,7 @@ let compteur = document.querySelector("#compteur");
 let count = 3;
 
 let backgroundMusic = document.getElementById("background-music");
-backgroundMusic.volume = 0.5; // Diminue le volume à 50%
+backgroundMusic.volume = 0.2; // Diminue le volume à 50%
 
 function updateCompteur() {
   state.innerHTML = "";
