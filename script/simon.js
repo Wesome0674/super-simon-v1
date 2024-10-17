@@ -214,6 +214,9 @@ const updateTurnDisplay = () => {
 let compteur = document.querySelector("#compteur");
 let count = 3;
 
+let backgroundMusic = document.getElementById("background-music");
+backgroundMusic.volume = 0.5; // Diminue le volume à 50%
+
 function updateCompteur() {
   state.innerHTML = "";
   if (count > 0) {

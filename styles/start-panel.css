@@ -12,7 +12,7 @@ body #background {
 }
 body .loader {
   padding: 0;
-  margin-top: 75px;
+  margin-top: 100px;
   margin-bottom: 25px;
 }
 #score {
@@ -26,6 +26,7 @@ body .loader {
   position: relative;
   display: flex;
   justify-content: space-around;
+
 }
 .loader-circle {
   width: 25px;
@@ -166,24 +167,106 @@ body #title {
   left: 35%;
 }
 #play {
+  margin-top: 50px;
   width: 70%;
 }
 #coucou {
+  width: 35%;
   position: absolute;
   right: -80px;
   bottom: 0;
 }
-
+ 
 .socle {
   position: absolute;
-  bottom: 0;
+  bottom: -100px;
   width: 100%;
   z-index: -1;
 }
-
+ 
 .container {
   display: flex;
   align-items: center;
   flex-direction: column;
   transform: translateY(-200px);
 }
+#stars{
+  width: 50%;
+  top: 0;
+  left: 10%;
+  max-width: 100%;
+  position: absolute;
+  animation: stars 8s infinite;
+}
+#stars1{
+  width: 35%;
+  top: 10%;
+  right: 0;
+  max-width: 100%;
+  position: absolute;
+  animation: stars 8s infinite;
+}
+#stars2{
+  width: 25%;
+  top: 24%;
+  left: 7%;
+  max-width: 100%;
+  position: absolute;
+  animation: stars 8s infinite;
+}
+#stars3{
+  width: 80%;
+  top: 20%;
+  left: 5%;
+  max-width: 100%;
+  position: absolute;
+  animation: starsbis 8s infinite;
+}
+#stars4{
+  width: 20%;
+  top: 38%;
+  left: 50%;
+  max-width: 100%;
+  position: absolute;
+  animation: starsbis 8s infinite;
+}
+ 
+@keyframes stars {
+  0% {
+    filter: opacity(0%);
+  }
+  50% {
+    filter: opacity(100%);
+  }
+  100% {
+    filter: opacity(0%);
+  }
+}
+@keyframes starsbis {
+  0% {
+    filter: opacity(100%);
+  }
+  50% {
+    filter: opacity(0%);
+  }
+  100% {
+    filter: opacity(100%);
+  }
+}
+
+.copiright {
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  line-height: 30px;
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--secondary-font);
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff,
+    0 0 40px rgb(149, 0, 255), 0 0 80px rgb(153, 0, 255),
+    0 0 90px rgb(157, 0, 255), 0 0 100px rgb(246, 2, 198),
+    0 0 150px rgb(255, 0, 230);
+}
+

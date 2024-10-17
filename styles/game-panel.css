@@ -1,6 +1,6 @@
 .game-container {
   padding: 100px 0;
-  
+
   flex-direction: column;
   gap: 70px;
   position: relative;
@@ -19,7 +19,6 @@
   margin: 0 auto;
   flex-wrap: wrap;
 }
-
 
 #background-screen {
   height: 85%;
@@ -51,14 +50,12 @@
   }
 }
 
-
 .screen img {
   position: absolute;
   top: 0;
   width: 100%;
   height: 100%;
 }
-
 
 p {
   font-size: 24px;
@@ -101,7 +98,7 @@ p {
 }
 
 .pied {
-  width: 210px;
+  width: 250px;
 }
 
 .lampe button {
@@ -115,27 +112,31 @@ p {
 
 .lampe:nth-child(1) {
   animation: slide 600ms ease-in forwards;
+  margin-top: 100px;
 }
 
 .lampe:nth-child(2) {
   animation: slide 900ms ease-in forwards;
-
 }
 
 .lampe:nth-child(3) {
   animation: slide 1200ms ease-in forwards;
+  margin-top: -50px;
 }
 
 .lampe:nth-child(4) {
   animation: slide 1500ms ease-in forwards;
+  margin-top: -50px;
 }
 
 .lampe:nth-child(5) {
   animation: slide 1800ms ease-in forwards;
+  margin-top: -125px;
 }
 
 .lampe:nth-child(6) {
   animation: slide 2100ms ease-in forwards;
+  margin-top: -50px;
 }
 
 @keyframes slide {
@@ -158,39 +159,39 @@ p {
 }
 
 .jaune {
-  width: 140px;
-  top: 30px;
-  left: 50px;
+  width: 160px;
+  top: 40px;
+  left: 60px;
 }
 
 .purple {
-  width: 140px;
-  top: 30px;
-  left: 45px;
+  width: 160px;
+  top: 35px;
+  left: 55px;
 }
 
 .red {
-  width: 140px;
-  top: 40px;
-  left: 40px;
+  width: 165px;
+  top: 45px;
+  left: 50px;
 }
 
 .orange {
-  width: 150px;
-  top: 30px;
-  left: 30px;
+  width: 175px;
+  top: 35px;
+  left: 40px;
 }
 
 .blue {
-  width: 140px;
-  top: 35px;
+  width: 160px;
+  top: 40px;
   left: 30px;
 }
 
 .green {
-  width: 140px;
-  top: 45px;
-  left: 25px;
+  width: 160px;
+  top: 50px;
+  left: 30px;
 }
 
 .body-font {
@@ -203,8 +204,7 @@ p {
   width: fit-content;
 }
 
-
-.score-container section{
+.score-container section {
   display: flex;
   align-items: center;
   gap: 30px;
@@ -212,13 +212,11 @@ p {
   width: fit-content;
 }
 
-
 .message-fin {
   height: fit-content;
   padding: 10px 10px;
   background-color: #f539d7;
   border-radius: 50px 50px 50px 0;
- 
 }
 
 .avatar-fin {
@@ -226,7 +224,6 @@ p {
   position: absolute;
   bottom: 0px;
   left: 50px;
-  
 }
 
 .action-button button {
@@ -252,8 +249,6 @@ p {
   justify-content: space-between;
 }
 
-
-
 .socle {
   position: absolute;
   bottom: 0;
@@ -271,3 +266,70 @@ p {
   transform: scaleX(-1);
 }
 
+#stars {
+  width: 50%;
+  top: 0;
+  left: 20%;
+  max-width: 100%;
+  position: absolute;
+  animation: stars 4s infinite;
+  z-index: -1;
+}
+#stars1 {
+  width: 35%;
+  top: 10%;
+  right: 0;
+  max-width: 100%;
+  position: absolute;
+  animation: stars 4s infinite;
+  z-index: 1;
+}
+#stars2 {
+  width: 25%;
+  top: 20%;
+  left: 14%;
+  max-width: 100%;
+  position: absolute;
+  animation: stars 4s infinite;
+  z-index: -1;
+}
+#stars3 {
+  width: 80%;
+  top: 20%;
+  left: 69%;
+  max-width: 100%;
+  position: absolute;
+  animation: starsbis 4s infinite;
+  z-index: -1;
+}
+#stars4 {
+  width: 20%;
+  top: 30%;
+  left: 64%;
+  max-width: 100%;
+  position: absolute;
+  animation: starsbis 4s infinite;
+  z-index: -1;
+}
+@keyframes stars {
+  0% {
+    filter: opacity(0%);
+  }
+  50% {
+    filter: opacity(100%);
+  }
+  100% {
+    filter: opacity(0%);
+  }
+}
+@keyframes starsbis {
+  0% {
+    filter: opacity(100%);
+  }
+  50% {
+    filter: opacity(0%);
+  }
+  100% {
+    filter: opacity(100%);
+  }
+}

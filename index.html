@@ -1,66 +1,67 @@
-<!-- Tache restante a faire: 
-  
---> 
+<!-- Tache restante a faire:     -regler le menu home    -regler bug de simon    -regler son    -Ciel etoilé    -BDD-->
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles/main.css" />
     <link rel="stylesheet" href="/styles/start-panel.css" />
     <title>Le jeu du super simon</title>
-</head>
-<body class="body-start">
-    <audio id="background-sound" loop>
-        <source src="/assets/son/son-lobby.wav" type="audio/mpeg" />
-        Votre navigateur ne supporte pas l'élément audio.
+  </head>
+  <body class="body-start">
+   <!--  <p class="copiright">
+      Copyright © 2024 Killian Boularand et Anh Hiep NGUYEN. Tous
+      droits réservés. Ce jeu a été réalisé par deux développeurs : Killian
+      Boularand et Anh Hiep NGUYEN, ainsi que par deux designers : Noa GODEL et
+      Cécile Guibet. Toute reproduction ou distribution sans autorisation
+      expresse est interdite. Merci de respecter notre travail !
+    </p> -->
+    <audio id="lobby-music" loop autoplay>
+      <source src="/assets/son/son-lobby.wav" type="audio/mpeg" />
+      Your browser does not support the audio tag.
     </audio>
-
+    <img id="stars" src="/assets/img/png/shootingstar.png" />
+    <img id="stars1" src="/assets/img/png/shootingstar.png" />
+    <img id="stars2" src="/assets/img/png/shootingstar.png" />
+    <img id="stars3" src="/assets/img/png/shootingstar.png" />
+    <img id="stars4" src="/assets/img/png/shootingstar.png" />
+    <audio id="background-sound" loop>
+      <source src="/assets/son/son-lobby.wav" type="audio/mpeg" />
+    </audio>
     <div class="container">
-        <div id="title">
-            <div class="neon">
-                <img id="circle" src="/assets/img/png/néon_cercle-removebg-preview.png" />
-                <img id="titre" src="/assets/img/png/texte.png" />
-            </div>
+      <div id="title">
+        <div class="neon">
+          <img
+            id="circle"
+            src="/assets/img/png/néon_cercle-removebg-preview.png"
+          />
+          <img id="titre" src="/assets/img/png/texte.png" />
         </div>
-        <div class="loader">
-            <div class="loader-circle"></div>
-            <div class="loader-circle"></div>
-            <div class="loader-circle"></div>
-            <div class="loader-circle"></div>
-            <div class="loader-circle"></div>
-            <div class="loader-circle"></div>
+      </div>
+      <div class="loader">
+        <div class="loader-circle"></div>
+        <div class="loader-circle"></div>
+        <div class="loader-circle"></div>
+        <div class="loader-circle"></div>
+        <div class="loader-circle"></div>
+        <div class="loader-circle"></div>
+      </div>
+      <a
+        href="/pages/game-panel.html"
+        class="transition-link"
+        onclick="playSound(event)"
+      >
+        <div class="neon">
+          <img id="play" src="/assets/img/png/bouton.png" />
         </div>
-        <a href="/pages/game-panel.html" class="transition-link" onclick="playSound(event)">
-            <div class="neon">
-                <img id="play" src="/assets/img/png/bouton.png" />
-            </div>
-        </a>
+      </a>
     </div>
-    
     <img id="coucou" src="/assets/img/png/output-onlinegiftools.gif" />
     <img class="socle" src="/assets/img/png/socle.png" alt="" />
-    
     <script src="/script/main.js"></script>
     <script src="/script/animationZoum.js"></script>
     <script>
-        // Fonction pour jouer le son au chargement de la page
-        window.onload = function() {
-            const backgroundSound = document.getElementById("background-sound");
-            backgroundSound.play().catch((error) => {
-                console.log("Erreur de lecture du son:", error);
-            });
-        };
-
-        // Fonction pour jouer le son lors du clic sur le lien
-        function playSound(event) {
-            const backgroundSound = document.getElementById("background-sound");
-            backgroundSound.play().catch((error) => {
-                console.log("Erreur de lecture du son:", error);
-            });
-            // Rediriger vers le panneau de jeu après quelques millisecondes
-          
-        }
+      // Fonction pour jouer le son au chargement de la page        window.onload = function() {            const backgroundSound = document.getElementById("background-sound");            backgroundSound.play().catch((error) => {                console.log("Erreur de lecture du son:", error);            });        };        // Fonction pour jouer le son lors du clic sur le lien        function playSound(event) {            const backgroundSound = document.getElementById("background-sound");            backgroundSound.play().catch((error) => {                console.log("Erreur de lecture du son:", error);            });            // Rediriger vers le panneau de jeu après quelques millisecondes        }
     </script>
-</body>
+  </body>
 </html>
