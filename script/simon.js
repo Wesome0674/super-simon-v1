@@ -31,6 +31,7 @@ async function getColors() {
   }
 }
 
+
 getColors();
 
 let audio1 = new Audio("/assets/son/1.mp3");
