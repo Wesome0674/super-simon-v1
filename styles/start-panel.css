@@ -12,7 +12,7 @@ body #background {
 }
 body .loader {
   padding: 0;
-  margin-top: 100px;
+  margin-top: 120px;
   margin-bottom: 25px;
 }
 #score {
@@ -99,6 +99,7 @@ body .loader {
 }
 body {
   background-color: black;
+  padding-top: 70px;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -167,7 +168,7 @@ body #title {
   left: 35%;
 }
 #play {
-  margin-top: 50px;
+  margin-top: 70px;
   width: 70%;
 }
 #coucou {
@@ -191,41 +192,41 @@ body #title {
   transform: translateY(-200px);
 }
 #stars{
-  width: 50%;
-  top: 0;
+  width: 20%;
+  top: 15%;
   left: 10%;
   max-width: 100%;
   position: absolute;
   animation: stars 8s infinite;
 }
 #stars1{
-  width: 35%;
-  top: 10%;
+  width: 20%;
+  top: 20%;
   right: 0;
   max-width: 100%;
   position: absolute;
   animation: stars 8s infinite;
 }
 #stars2{
-  width: 25%;
-  top: 24%;
-  left: 7%;
+  width: 20%;
+  top: 60%;
+  left: 20%;
   max-width: 100%;
   position: absolute;
   animation: stars 8s infinite;
 }
 #stars3{
-  width: 80%;
-  top: 20%;
+  width: 20%;
+  top: 40%;
   left: 5%;
   max-width: 100%;
   position: absolute;
   animation: starsbis 8s infinite;
 }
-#stars4{
+#stars4 {
   width: 20%;
-  top: 38%;
-  left: 50%;
+  top: 60%;
+  left: 66%;
   max-width: 100%;
   position: absolute;
   animation: starsbis 8s infinite;
