@@ -78,7 +78,42 @@ const userChooseAColor = () => {
       console.log(clikedColors);
       console.log(gameColorsPattern);
 
-      // Vérification du motif
+      // Vérification si le dernier bouton cliqué est correct
+      const lastClickedColor = button.id;
+      const isCorrectColor = lastClickedColor === gameColorsPattern[clikedColors.length - 1];
+
+      if (!isCorrectColor) {
+        // Le joueur a cliqué sur une couleur incorrecte
+        let layerEnd = document.getElementById("layer-blur");
+        layerEnd.style.display = "grid";
+        document.querySelector("#score-fin").innerHTML = score;
+
+        // Afficher un message de perte en fonction du score
+        let message;
+        if (score <= 3) {
+          message = "Mémoire de poisson rouge";
+        } else if (score <= 6) {
+          message = "Pas mal, mais tu peux mieux faire !";
+        } else if (score <= 10) {
+          message = "Bien joué ! Tu commences à te souvenir !";
+        } else {
+          message = "Impressionnant ! Tu es un vrai maître de la mémoire !";
+        }
+        document.querySelector("#message").innerHTML = message;
+
+        // Gérer la logique de replay
+        let replay = document.querySelector("#replay");
+        replay.addEventListener("click", () => {
+          resetGame();
+          layerEnd.style.display = "none";
+          location.reload();
+          updateCompteur(); // Démarrer le compteur
+        });
+
+        return; // Arrêter l'exécution ici
+      }
+
+      // Vérification du motif seulement si le joueur a cliqué sur le bon bouton
       if (clikedColors.length === gameColorsPattern.length) {
         const isCorrectPattern = clikedColors.every(
           (color, index) => color === gameColorsPattern[index]
@@ -92,30 +127,6 @@ const userChooseAColor = () => {
           updateTurnDisplay();
           simonTurn(); // Passer au tour de Simon
           delay = delay - 50;
-        } else {
-          let layerEnd = document.getElementById("layer-blur");
-          layerEnd.style.display = "grid";
-          document.querySelector("#score-fin").innerHTML = score;
-          if (score <= 3) {
-            document.querySelector("#message").innerHTML =
-              "Mémoire de poisson rouge";
-          } else if (score <= 6) {
-            document.querySelector("#message").innerHTML =
-              "Pas mal, mais tu peux mieux faire !";
-          } else if (score <= 10) {
-            document.querySelector("#message").innerHTML =
-              "Bien joué ! Tu commences à te souvenir !";
-          } else {
-            document.querySelector("#message").innerHTML =
-              "Impressionnant ! Tu es un vrai maître de la mémoire !";
-          }
-          let replay = document.querySelector("#replay");
-          replay.addEventListener("click", () => {
-            resetGame();
-            layerEnd.style.display = "none";
-            location.reload();
-            updateCompteur(); // Démarrer le compteur
-          });
         }
       }
     };
