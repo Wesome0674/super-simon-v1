@@ -102,7 +102,7 @@ p {
   color: white;
 }
 
-.lampe img {
+.pied {
   width: 210px;
 }
 
@@ -121,6 +121,7 @@ p {
 
 .lampe:nth-child(2) {
   animation: slide 900ms ease-in forwards;
+
 }
 
 .lampe:nth-child(3) {
@@ -144,7 +145,7 @@ p {
     transform: translateY(1000px);
   }
   100% {
-    transform: translateY(0px);
+    transform: translateY(50px);
   }
 }
 
@@ -154,54 +155,43 @@ p {
   border: none;
   color: black;
   cursor: pointer;
+  position: absolute;
 }
 
 .jaune {
-  background-color: #ffd51b;
-  width: 170px;
-  height: 170px;
-  top: 50px;
+  width: 140px;
+  top: 30px;
   left: 50px;
 }
 
 .purple {
-  background-color: #bf00ff;
-  width: 170px;
-  height: 170px;
-  top: 40px;
-  left: 50px;
+  width: 140px;
+  top: 30px;
+  left: 45px;
 }
 
 .red {
-  background-color: #f0252f;
-  width: 170px;
-  height: 170px;
+  width: 140px;
   top: 40px;
-  left: 50px;
+  left: 40px;
 }
 
 .orange {
-  background-color: #ff7627;
-  width: 170px;
-  height: 170px;
-  top: 40px;
-  left: 40px;
+  width: 150px;
+  top: 30px;
+  left: 30px;
 }
 
 .blue {
-  background-color: #27deff;
-  width: 170px;
-  height: 170px;
-  top: 45px;
-  left: 40px;
+  width: 140px;
+  top: 35px;
+  left: 30px;
 }
 
 .green {
-  background-color: #41ff27;
-  width: 170px;
-  height: 170px;
-  top: 60px;
-  left: 40px;
+  width: 140px;
+  top: 45px;
+  left: 25px;
 }
 
 .body-font {
