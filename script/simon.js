@@ -151,11 +151,11 @@ const userChooseAColor = () => {
 
         // Afficher un message de perte en fonction du score
         let message;
-        if (score <= 45) {
+        if (score <= 3) {
           message = "Mémoire de poisson rouge";
-        } else if (score <= 90) {
+        } else if (score <= 6) {
           message = "Pas mal, mais tu peux mieux faire !";
-        } else if (score <= 150) {
+        } else if (score <= 10) {
           message = "Bien joué ! Tu commences à te souvenir !";
         } else {
           message = "Impressionnant ! Tu es un vrai maître de la mémoire !";
