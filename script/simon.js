@@ -187,7 +187,7 @@ const userChooseAColor = () => {
           isUserTurn = false;
           updateTurnDisplay();
           simonTurn(); // Passer au tour de Simon
-          delay = delay - 100;
+          delay = delay - 50;
         }
       }
     };
