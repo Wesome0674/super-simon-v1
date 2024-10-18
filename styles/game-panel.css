@@ -337,3 +337,8 @@ p {
     filter: opacity(100%);
   }
 }
+
+
+#score-increment {
+  display: none;
+}
