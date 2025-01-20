@@ -7,26 +7,7 @@ let gameColorsPattern = [];
 let clickedColors = [];
 const backgroundScreen = document.getElementById("background-screen");
 const possibleColors = ["yellow", "purple", "red", "orange", "blue", "green"];
-let colorOrder = []; // Pour stocker les couleurs dans l'ordre souhaité
-
-async function getColors() {
-  const url = "https://getcolors-garnuhpsxq-uc.a.run.app/";
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`);
-    }
-    const colors = await response.json();
-    colorOrder = colors
-      .map((color) => color.name.trim())
-      .filter((color) => possibleColors.includes(color));
-    console.log(colorOrder); // Vérifier les couleurs récupérées
-  } catch (error) {
-    console.log(error.message);
-  }
-}
-
-getColors();
+let colorOrder = [...possibleColors]; // Les couleurs disponibles
 
 let audio1 = new Audio("/assets/son/1.mp3");
 let audio2 = new Audio("/assets/son/2.mp3");
@@ -97,7 +78,6 @@ const userChooseAColor = () => {
     button.onclick = () => {
       if (!isUserTurn) return; // Ignorer les clics si ce n'est pas le tour du joueur
 
-      // Jouer le son correspondant à la couleur
       switch (button.id) {
         case "yellow":
           currentAudio = audio1;
@@ -121,13 +101,11 @@ const userChooseAColor = () => {
           console.log("sorry but it seems to not working");
       }
 
-      // Jouer le son si ce n'est pas déjà en cours
       if (currentAudio) {
-        currentAudio.currentTime = 0; // Remise à zéro du son
+        currentAudio.currentTime = 0;
         currentAudio.play();
       }
 
-      // Changer la luminosité du bouton cliqué
       button.style.filter = "brightness(1)";
       setTimeout(() => {
         button.style.filter = "brightness(50%)";
@@ -137,19 +115,16 @@ const userChooseAColor = () => {
       console.log(clickedColors);
       console.log(gameColorsPattern);
 
-      // Vérification si le dernier bouton cliqué est correct
       const lastClickedColor = button.id;
       const isCorrectColor =
         lastClickedColor === gameColorsPattern[clickedColors.length - 1];
 
       if (!isCorrectColor) {
         wrong.play();
-        // Le joueur a cliqué sur une couleur incorrecte
         let layerEnd = document.getElementById("layer-blur");
         layerEnd.style.display = "grid";
         document.querySelector("#score-fin").innerHTML = score;
 
-        // Afficher un message de perte en fonction du score
         let message;
         if (score <= 45) {
           message = "Mémoire de poisson rouge";
@@ -162,7 +137,6 @@ const userChooseAColor = () => {
         }
         document.querySelector("#message").innerHTML = message;
 
-        // Gérer la logique de replay
         let replay = document.querySelector("#replay");
         replay.addEventListener("click", () => {
           resetGame();
@@ -171,22 +145,21 @@ const userChooseAColor = () => {
           updateCompteur();
         });
 
-        return; // Arrêter l'exécution ici
+        return;
       }
 
-      // Vérification du motif seulement si le joueur a cliqué sur le bon bouton
       if (clickedColors.length === gameColorsPattern.length) {
         const isCorrectPattern = clickedColors.every(
           (color, index) => color === gameColorsPattern[index]
         );
 
         if (isCorrectPattern) {
-          score >= 200 ? score : score+= 15;
+          score >= 200 ? score : (score += 15);
           document.querySelector("#score").innerHTML = score;
           clickedColors = [];
           isUserTurn = false;
           updateTurnDisplay();
-          simonTurn(); // Passer au tour de Simon
+          simonTurn();
           delay = delay - 50;
         }
       }
@@ -196,10 +169,10 @@ const userChooseAColor = () => {
 
 const simonTurn = () => {
   isUserTurn = false;
-  generateRandomColor(); // Toujours générer une couleur
+  generateRandomColor();
   setTimeout(() => {
     highlightSelectedColor(gameColorsPattern);
-  }, 1500); // Délai de 1 seconde avant le tour de Simon
+  }, 1500);
 };
 
 const resetGame = () => {
@@ -215,12 +188,11 @@ const updateTurnDisplay = () => {
   state.innerHTML = isUserTurn ? "A Toi" : "A Simon";
 };
 
-// Démarre le jeu pour la première fois
 let compteur = document.querySelector("#compteur");
 let count = 3;
 
 let backgroundMusic = document.getElementById("background-music");
-backgroundMusic.volume = 0.2; // Diminue le volume à 50%
+backgroundMusic.volume = 0.2;
 
 function updateCompteur() {
   state.innerHTML = "";
